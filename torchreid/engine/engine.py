@@ -369,7 +369,7 @@ class Engine(object):
                 batch_time.update(time.time() - end)
                 features = features.cpu()
                 f_.append(features)
-                pids_.extend(pids.tolist())
+                pids_.extend(pids if isinstance(pids,list) else pids.tolist())#.tolist())
                 camids_.extend(camids.tolist())
             f_ = torch.cat(f_, 0)
             pids_ = np.asarray(pids_)
